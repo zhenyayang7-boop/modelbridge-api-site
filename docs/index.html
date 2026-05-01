@@ -1,0 +1,20 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/><title>Docs - Chinese Model API Gateway</title><style>body{font-family:Inter,system-ui;background:#080d1c;color:#eef2ff;margin:0}.wrap{max-width:1000px;margin:auto;padding:32px}a{color:#93c5fd}.card{background:#111936;border:1px solid #293756;border-radius:18px;padding:22px;margin:18px 0}.code{background:#050816;border:1px solid #26334f;border-radius:16px;padding:18px;overflow:auto;color:#dbeafe}.muted{color:#94a3b8}</style></head><body><div class="wrap"><nav><a href="../index.html">Home</a> · <a href="../pricing.html">Pricing</a> · <a href="../dashboard.html">Dashboard</a></nav><h1>Quickstart</h1><div class="card"><h2>1. Register</h2><p>Open the local dashboard and create an account:</p><p><a href="../dashboard.html">/dashboard</a></p><p class="muted">Registration creates your first virtual API key and gives you MVP test credits.</p></div><div class="card"><h2>2. Use the OpenAI SDK</h2><pre class="code">pip install openai
+
+from openai import OpenAI
+
+client = OpenAI(
+    api_key="sk-cmag-your-virtual-api-key",
+    base_url="http://127.0.0.1:8000/v1"
+)
+
+response = client.chat.completions.create(
+    model="deepseek-chat",
+    messages=[{"role": "user", "content": "Say hello"}]
+)
+print(response.choices[0].message.content)</pre></div><div class="card"><h2>3. REST API</h2><pre class="code">curl http://127.0.0.1:8000/v1/chat/completions \
+  -H "Authorization: Bearer sk-cmag-your-key" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "model": "deepseek-chat",
+    "messages": [{"role":"user","content":"Hello"}]
+  }'</pre></div><div class="card"><h2>Endpoints</h2><ul><li><code>POST /auth/register</code></li><li><code>POST /auth/login</code></li><li><code>GET /v1/pricing</code></li><li><code>POST /v1/chat/completions</code></li><li><code>GET /dashboard</code></li></ul></div></div><footer style="max-width:1000px;margin:40px auto;padding:20px;color:#94a3b8">Legal: <a href="../legal/terms.html">Terms</a> · <a href="../legal/privacy.html">Privacy</a> · <a href="../legal/refund.html">Refund</a> · <a href="../legal/acceptable-use.html">Acceptable Use</a></footer></body></html>
