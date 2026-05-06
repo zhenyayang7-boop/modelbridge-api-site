@@ -1,1 +1,52 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/><title>Pricing - Chinese Model API Gateway</title><style>body{font-family:Inter,system-ui;background:#080d1c;color:#eef2ff;margin:0}.wrap{max-width:1000px;margin:auto;padding:32px}a{color:#93c5fd}.card{background:#111936;border:1px solid #293756;border-radius:18px;padding:22px;margin:18px 0}table{width:100%;border-collapse:collapse}td,th{border-bottom:1px solid #293756;padding:12px;text-align:left}.muted{color:#94a3b8}.big{font-size:32px;font-weight:900}</style></head><body><div class="wrap"><nav><a href="index.html">Home</a> · <a href="docs/">Docs</a> · <a href="dashboard.html">Dashboard</a></nav><h1>Pricing</h1><p class="muted">Simple prepaid credits. Token prices are shown per 1 million tokens.</p><div class="card"><table><tr><th>Model</th><th>Input</th><th>Output</th><th>Status</th></tr><tr><td><b>deepseek-chat</b><br><span class="muted">DeepSeek V4 Flash compatible route</span></td><td><span class="big">$0.30</span> / 1M</td><td><span class="big">$0.60</span> / 1M</td><td>Available in MVP</td></tr></table></div><div class="card"><h2>Credits</h2><p>During MVP testing, credits are added manually or through local test checkout. Production payment is not enabled yet.</p><ul><li>$5 credits</li><li>$10 credits</li><li>$20 credits</li></ul></div><div class="card"><h2>Notes</h2><p class="muted">Prices may change. The goal is transparent billing, no hidden quota multipliers, and no model substitution.</p></div></div><footer style="max-width:1000px;margin:40px auto;padding:20px;color:#94a3b8">Legal: <a href="legal/terms.html">Terms</a> · <a href="legal/privacy.html">Privacy</a> · <a href="legal/refund.html">Refund</a> · <a href="legal/acceptable-use.html">Acceptable Use</a></footer></body></html>
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Pricing - ModelBridge API</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="shell nav">
+      <a class="brand" href="index.html"><span class="mark">MB</span><span>ModelBridge API</span></a>
+      <nav class="navlinks"><a href="index.html">Home</a><a href="docs/">Docs</a><a href="dashboard.html">Dashboard</a></nav>
+    </div>
+  </header>
+  <main class="shell">
+    <section class="section">
+      <p class="eyebrow">Pricing</p>
+      <h1>Prepaid credits, clear token rates.</h1>
+      <p class="lead">Production payment is not enabled until payment-provider review is complete. MVP balances can be issued manually or through test checkout while the gateway is being verified.</p>
+    </section>
+    <section class="section">
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Model</th><th>Input</th><th>Output</th><th>Status</th></tr></thead>
+          <tbody>
+            <tr>
+              <td><strong>deepseek-chat</strong><br><span class="muted">Initial Chinese model route</span></td>
+              <td><strong>$0.30</strong> / 1M tokens</td>
+              <td><strong>$0.60</strong> / 1M tokens</td>
+              <td>MVP route</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+    <section class="section">
+      <div class="pricing-grid">
+        <div class="cell span-4"><div class="label">Starter</div><h2>$5</h2><p class="muted">Small integration tests and SDK verification.</p></div>
+        <div class="cell span-4"><div class="label">Builder</div><h2>$10</h2><p class="muted">Prototype agents, prompt tests, and early product experiments.</p></div>
+        <div class="cell span-4"><div class="label">Operator</div><h2>$20</h2><p class="muted">Longer test runs and multiple app keys during MVP validation.</p></div>
+      </div>
+    </section>
+    <section class="section">
+      <div class="notice">
+        <strong>Payment note.</strong> Public checkout opens after Dodo verification, domain binding, backend deployment, webhook verification, and one successful end-to-end payment test.
+      </div>
+    </section>
+  </main>
+  <footer class="footer"><div class="shell"><span>ModelBridge API</span><span><a href="legal/terms.html">Terms</a> · <a href="legal/privacy.html">Privacy</a> · <a href="legal/refund.html">Refund</a> · <a href="legal/acceptable-use.html">Acceptable Use</a></span></div></footer>
+</body>
+</html>

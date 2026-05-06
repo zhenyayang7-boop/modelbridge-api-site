@@ -1,12 +1,102 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/><title>Chinese Model API Gateway</title><style>body{margin:0;font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:#080d1c;color:#eef2ff}a{color:#93c5fd}.wrap{max-width:1120px;margin:auto;padding:32px}.hero{padding:72px 0}.badge{display:inline-block;background:#172554;color:#bfdbfe;border:1px solid #1d4ed8;border-radius:999px;padding:8px 12px;font-size:14px}.h1{font-size:54px;line-height:1.02;font-weight:900;margin:18px 0;max-width:860px}.sub{font-size:20px;line-height:1.6;color:#b6c2da;max-width:780px}.btn{display:inline-block;background:#3b82f6;color:white;text-decoration:none;padding:14px 20px;border-radius:12px;font-weight:800;margin-right:10px}.btn2{background:#111827;border:1px solid #334155}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px;margin:30px 0}.card{background:#111936;border:1px solid #293756;border-radius:18px;padding:22px}.muted{color:#94a3b8}.price{font-size:32px;font-weight:900}.code{background:#050816;border:1px solid #26334f;border-radius:16px;padding:18px;overflow:auto;color:#dbeafe}</style></head><body><div class="wrap"><nav><b>Chinese Model API Gateway</b> · <a href="pricing.html">Pricing</a> · <a href="docs/">Docs</a> · <a href="dashboard.html">Dashboard</a></nav><section class="hero"><span class="badge">OpenAI-compatible API for Chinese AI models</span><div class="h1">Use DeepSeek and other Chinese models without Chinese accounts or local payments.</div><p class="sub">One API, USD credits, transparent pricing, virtual API keys, and usage tracking for global developers building AI apps and agents.</p><p><a class="btn" href="dashboard.html">Open Dashboard</a><a class="btn btn2" href="docs/">Read Quickstart</a></p></section><section class="grid"><div class="card"><h3>OpenAI-compatible</h3><p class="muted">Switch by changing base URL, API key, and model name.</p></div><div class="card"><h3>USD credits</h3><p class="muted">Prepaid balance and token-based billing. No Chinese local payment required.</p></div><div class="card"><h3>Transparent usage</h3><p class="muted">Track tokens, charged amount, upstream cost estimate, and margin.</p></div><div class="card"><h3>Chinese model focus</h3><p class="muted">Start with DeepSeek. Expand to Qwen, GLM, Kimi, image, speech, and video.</p></div></section><section class="card"><h2>First model</h2><p><b>deepseek-chat</b> — Input <span class="price">$0.30</span> / 1M tokens, Output <span class="price">$0.60</span> / 1M tokens.</p></section><section><h2>Quick example</h2><pre class="code">from openai import OpenAI
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>ModelBridge API</title>
+  <meta name="description" content="OpenAI-compatible API access for Chinese AI models, with USD credits, virtual API keys, and developer usage tracking." />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="shell nav">
+      <a class="brand" href="index.html"><span class="mark">MB</span><span>ModelBridge API</span></a>
+      <nav class="navlinks" aria-label="Primary navigation">
+        <a href="pricing.html">Pricing</a>
+        <a href="docs/">Docs</a>
+        <a href="dashboard.html">Dashboard</a>
+        <a href="legal/terms.html">Legal</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="shell">
+    <section class="hero">
+      <div class="hero-main">
+        <p class="eyebrow">OpenAI-compatible gateway for Chinese models</p>
+        <h1>ModelBridge API</h1>
+        <p class="lead">Use DeepSeek and other Chinese model routes through one developer API with USD credits, virtual API keys, usage tracking, and clear token pricing.</p>
+        <div class="actions">
+          <a class="button accent" href="dashboard.html">Open Dashboard</a>
+          <a class="button secondary" href="docs/">Read Quickstart</a>
+        </div>
+      </div>
+      <aside class="hero-side">
+        <div class="status-grid">
+          <div class="cell span-12">
+            <div class="label">Launch status</div>
+            <p><strong>MVP preview live.</strong> Production payment is pending payment-provider review and final domain binding.</p>
+          </div>
+          <div class="cell span-6">
+            <div class="number">01</div>
+            <p><strong>API shape</strong><br><span class="muted">OpenAI SDK compatible</span></p>
+          </div>
+          <div class="cell span-6">
+            <div class="number">02</div>
+            <p><strong>Billing model</strong><br><span class="muted">Prepaid USD credits</span></p>
+          </div>
+          <div class="cell span-12">
+            <div class="label">First route</div>
+            <p><strong>deepseek-chat</strong> starts the catalog. Qwen, GLM, Kimi, image, speech, and video routes can be added after the core billing path is verified.</p>
+          </div>
+        </div>
+      </aside>
+    </section>
+
+    <section class="section">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">What it solves</p>
+          <h2>A developer bridge for Chinese model access.</h2>
+        </div>
+        <p class="muted">The product is built for global developers and AI builders who want Chinese model coverage without juggling local accounts, local payment methods, or provider-specific billing dashboards.</p>
+      </div>
+      <div class="feature-grid">
+        <div class="cell span-3"><h3>One API</h3><p class="muted">Change the base URL, API key, and model name while keeping OpenAI SDK semantics.</p></div>
+        <div class="cell span-3"><h3>Virtual keys</h3><p class="muted">Create and disable application keys from the dashboard without exposing upstream credentials.</p></div>
+        <div class="cell span-3"><h3>Usage ledger</h3><p class="muted">Track requests, tokens, charged amount, upstream estimate, latency, and margin.</p></div>
+        <div class="cell span-3"><h3>Credit billing</h3><p class="muted">Prepaid balances make cost exposure explicit before production checkout is enabled.</p></div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">Quickstart</p>
+          <h2>Switch an OpenAI client in three lines.</h2>
+        </div>
+        <p class="muted">During MVP, use your configured backend endpoint. The hosted static site is the public product surface; the dashboard can point at a local or deployed API backend.</p>
+      </div>
+      <pre class="code">from openai import OpenAI
 
 client = OpenAI(
-    api_key="sk-cmag-your-key",
-    base_url="http://127.0.0.1:8000/v1"
+    api_key="sk-mb-your-virtual-key",
+    base_url="https://YOUR_API_BACKEND/v1"
 )
 
 response = client.chat.completions.create(
     model="deepseek-chat",
     messages=[{"role": "user", "content": "Hello"}]
 )
-print(response.choices[0].message.content)</pre></section></div><footer style="max-width:1000px;margin:40px auto;padding:20px;color:#94a3b8">Legal: <a href="legal/terms.html">Terms</a> · <a href="legal/privacy.html">Privacy</a> · <a href="legal/refund.html">Refund</a> · <a href="legal/acceptable-use.html">Acceptable Use</a></footer></body></html>
+print(response.choices[0].message.content)</pre>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="shell">
+      <span>ModelBridge API</span>
+      <span><a href="legal/terms.html">Terms</a> · <a href="legal/privacy.html">Privacy</a> · <a href="legal/refund.html">Refund</a> · <a href="legal/acceptable-use.html">Acceptable Use</a></span>
+    </div>
+  </footer>
+</body>
+</html>

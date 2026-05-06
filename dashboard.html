@@ -3,60 +3,243 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>China Model API Gateway - Local Dashboard</title>
-  <style>
-    body{font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;margin:0;background:#0b1020;color:#e8ecf8}.wrap{max-width:1100px;margin:0 auto;padding:28px}.card{background:#141b34;border:1px solid #26304f;border-radius:16px;padding:18px;margin:14px 0;box-shadow:0 10px 30px #0004}input,button{border-radius:10px;border:1px solid #344062;background:#0e152a;color:#e8ecf8;padding:10px 12px;margin:4px}button{cursor:pointer;background:#3b82f6;border-color:#3b82f6;font-weight:700}button.secondary{background:#1f2937;border-color:#475569}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px}.muted{color:#94a3b8}.ok{color:#86efac}.bad{color:#fca5a5}table{width:100%;border-collapse:collapse;overflow:auto}td,th{border-bottom:1px solid #26304f;padding:8px;text-align:left;font-size:13px}code{background:#0e152a;padding:2px 6px;border-radius:6px}.keyrow{word-break:break-all}.hide{display:none}</style>
+  <title>Dashboard - ModelBridge API</title>
+  <link rel="stylesheet" href="styles.css" />
 </head>
-<body><div class="wrap">
-  <h1>China Model API Gateway</h1>
-  <p class="muted">Local MVP dashboard: register, login, balance, API keys, usage, pricing.</p>
-  <div class="card" id="authCard">
-    <h3>Register / Login</h3>
-    <input id="name" placeholder="Name" />
-    <input id="email" placeholder="Email" />
-    <input id="password" placeholder="Password" type="password" />
-    <button onclick="register()">Register</button>
-    <button class="secondary" onclick="login()">Login</button>
-    <button class="secondary" onclick="logout()">Logout</button>
-    <p id="authStatus" class="muted"></p>
-    <div id="initialKey" class="keyrow ok"></div>
-  </div>
-  <div class="card">
-    <h3>Session</h3>
-    <input id="sessionToken" style="width:70%" placeholder="sess-..." />
-    <button onclick="saveSession()">Save Session</button>
-    <button class="secondary" onclick="refreshAll()">Refresh</button>
-    <p id="status" class="muted"></p>
-  </div>
-  <div class="grid">
-    <div class="card"><h3>Balance</h3><div id="balance" style="font-size:34px;font-weight:800">—</div></div>
-    <div class="card"><h3>Usage Summary</h3><div id="summary" class="muted">—</div></div>
-  </div>
-  <div class="card"><h3>API Keys</h3><button onclick="createKey()">Create New Key</button><div id="newKey" class="keyrow ok"></div><table id="keys"></table></div>
-  <div class="card"><h3>Billing Test</h3><button onclick="checkout(5)">$5 credits</button><button onclick="checkout(10)">$10 credits</button><button onclick="checkout(20)">$20 credits</button><div id="checkout" class="keyrow ok"></div><h4>Orders</h4><table id="orders"></table><h4>Balance Transactions</h4><table id="transactions"></table></div>
-  <div class="card"><h3>Pricing</h3><table id="pricing"></table></div>
-  <div class="card"><h3>Recent Usage</h3><table id="usage"></table></div>
-</div>
+<body>
+  <header class="topbar">
+    <div class="shell nav">
+      <a class="brand" href="index.html"><span class="mark">MB</span><span>ModelBridge API</span></a>
+      <nav class="navlinks"><a href="index.html">Home</a><a href="pricing.html">Pricing</a><a href="docs/">Docs</a></nav>
+    </div>
+  </header>
+  <main class="shell">
+    <section class="section">
+      <p class="eyebrow">Operator dashboard</p>
+      <h1>Register, log in, issue keys, track usage.</h1>
+      <p class="lead">This dashboard can talk to a local or deployed backend. Save the backend URL first, then register or log in.</p>
+    </section>
+
+    <section class="section">
+      <div class="form-grid">
+        <div class="cell span-8">
+          <h2>Backend connection</h2>
+          <div class="field">
+            <label for="apiBase">API backend URL</label>
+            <input id="apiBase" placeholder="http://127.0.0.1:8000" />
+          </div>
+          <div class="actions">
+            <button onclick="saveApiBase()">Save backend URL</button>
+            <button class="secondary" onclick="refreshAll()">Refresh dashboard</button>
+          </div>
+          <p id="status" class="muted"></p>
+        </div>
+        <div class="cell span-4">
+          <div class="label">Current mode</div>
+          <p><strong>MVP dashboard.</strong></p>
+          <p class="muted">Production checkout remains disabled until payment review and webhook verification are complete.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="form-grid">
+        <div class="cell span-6">
+          <h2>Account</h2>
+          <div class="field"><label for="name">Name</label><input id="name" autocomplete="name" /></div>
+          <div class="field"><label for="email">Email</label><input id="email" autocomplete="email" /></div>
+          <div class="field"><label for="password">Password</label><input id="password" type="password" autocomplete="current-password" /></div>
+          <div class="actions">
+            <button onclick="register()">Register</button>
+            <button class="secondary" onclick="login()">Log in</button>
+            <button class="secondary" onclick="logout()">Log out</button>
+          </div>
+          <p id="authStatus" class="muted"></p>
+          <div id="initialKey" class="keyrow ok"></div>
+        </div>
+        <div class="cell span-6">
+          <h2>Session</h2>
+          <div class="field"><label for="sessionToken">Session token</label><input id="sessionToken" placeholder="sess-..." /></div>
+          <div class="actions">
+            <button onclick="saveSession()">Save session</button>
+            <button class="secondary" onclick="clearSession()">Clear session</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="metric-grid">
+        <div class="cell span-6"><div class="label">Balance</div><div id="balance" class="number">—</div></div>
+        <div class="cell span-6"><div class="label">Usage summary</div><div id="summary" class="muted">—</div></div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-head"><div><p class="eyebrow">Keys</p><h2>Virtual API keys</h2></div><button onclick="createKey()">Create new key</button></div>
+      <div id="newKey" class="keyrow ok"></div>
+      <div class="table-wrap"><table id="keys"></table></div>
+    </section>
+
+    <section class="section">
+      <div class="section-head"><div><p class="eyebrow">Billing test</p><h2>Manual test checkout</h2></div><p class="muted">Use only for local/MVP validation while Dodo production checkout is still under review.</p></div>
+      <div class="actions">
+        <button onclick="checkout(5)">$5 credits</button>
+        <button onclick="checkout(10)">$10 credits</button>
+        <button onclick="checkout(20)">$20 credits</button>
+      </div>
+      <div id="checkout" class="keyrow ok"></div>
+      <h3>Orders</h3>
+      <div class="table-wrap"><table id="orders"></table></div>
+      <h3>Balance transactions</h3>
+      <div class="table-wrap"><table id="transactions"></table></div>
+    </section>
+
+    <section class="section">
+      <div class="section-head"><div><p class="eyebrow">Pricing</p><h2>Model rates</h2></div></div>
+      <div class="table-wrap"><table id="pricing"></table></div>
+    </section>
+
+    <section class="section">
+      <div class="section-head"><div><p class="eyebrow">Usage</p><h2>Recent requests</h2></div></div>
+      <div class="table-wrap"><table id="usage"></table></div>
+    </section>
+  </main>
+  <footer class="footer"><div class="shell"><span>ModelBridge API</span><span><a href="legal/terms.html">Terms</a> · <a href="legal/privacy.html">Privacy</a> · <a href="legal/refund.html">Refund</a> · <a href="legal/acceptable-use.html">Acceptable Use</a></span></div></footer>
+
 <script>
-const $=id=>document.getElementById(id); $('sessionToken').value=localStorage.getItem('sessionToken')||'';
-function sessionHeaders(){return {'Authorization':'Bearer '+$('sessionToken').value,'Content-Type':'application/json'}}
-function jsonHeaders(){return {'Content-Type':'application/json'}}
-function saveSession(){localStorage.setItem('sessionToken',$('sessionToken').value);refreshAll()}
-function logout(){localStorage.removeItem('sessionToken');$('sessionToken').value='';$('status').textContent='Logged out'}
-async function get(url){const r=await fetch(url,{headers:sessionHeaders()}); if(!r.ok) throw new Error(await r.text()); return r.json()}
-async function post(url,body,auth=true){const r=await fetch(url,{method:'POST',headers:auth?sessionHeaders():jsonHeaders(),body:JSON.stringify(body||{})}); if(!r.ok) throw new Error(await r.text()); return r.json()}
-async function patch(url,body){const r=await fetch(url,{method:'PATCH',headers:sessionHeaders(),body:JSON.stringify(body||{})}); if(!r.ok) throw new Error(await r.text()); return r.json()}
-async function register(){try{const d=await post('/auth/register',{name:$('name').value,email:$('email').value,password:$('password').value},false); $('sessionToken').value=d.session_token; localStorage.setItem('sessionToken',d.session_token); $('authStatus').innerHTML='<span class="ok">Registered. Initial balance $'+d.initial_balance_usd+'</span>'; $('initialKey').innerHTML='Initial API key, copy now: <code>'+d.initial_api_key+'</code>'; await refreshAll()}catch(e){$('authStatus').innerHTML='<span class="bad">'+e.message+'</span>'}}
-async function login(){try{const d=await post('/auth/login',{email:$('email').value,password:$('password').value},false); $('sessionToken').value=d.session_token; localStorage.setItem('sessionToken',d.session_token); $('authStatus').innerHTML='<span class="ok">Logged in</span>'; $('initialKey').innerHTML=''; await refreshAll()}catch(e){$('authStatus').innerHTML='<span class="bad">'+e.message+'</span>'}}
-async function refreshAll(){try{$('status').textContent='Loading...'; await Promise.all([loadBalance(),loadUsage(),loadKeys(),loadPricing(),loadBilling()]); $('status').innerHTML='<span class="ok">Connected</span>'}catch(e){$('status').innerHTML='<span class="bad">'+e.message+'</span>'}}
-async function loadBalance(){const d=await get('/dashboard/balance'); $('balance').textContent='$'+Number(d.balance_usd).toFixed(6)}
-async function loadUsage(){const d=await get('/dashboard/usage?limit=20'); const s=d.summary; $('summary').innerHTML=`Requests: <b>${s.requests}</b><br>Tokens: <b>${s.total_tokens}</b><br>Charged: <b>$${Number(s.charged_amount_usd||s.estimated_cost_usd||0).toFixed(6)}</b><br>Gross margin: <b>$${Number(s.gross_margin_usd||0).toFixed(6)}</b>`; $('usage').innerHTML='<tr><th>time</th><th>model</th><th>tokens</th><th>charged</th><th>margin</th><th>latency</th></tr>'+d.data.map(x=>`<tr><td>${x.ts}</td><td>${x.public_model}</td><td>${x.total_tokens}</td><td>$${Number(x.charged_amount_usd||x.estimated_cost_usd||0).toFixed(8)}</td><td>$${Number(x.gross_margin_usd||0).toFixed(8)}</td><td>${x.latency_ms}ms</td></tr>`).join('')}
-async function loadKeys(){const d=await get('/dashboard/api-keys'); $('keys').innerHTML='<tr><th>id</th><th>name</th><th>prefix</th><th>status</th><th>last used</th><th>action</th></tr>'+d.data.map(k=>`<tr><td>${k.id}</td><td>${k.name}</td><td><code>${k.prefix}</code></td><td>${k.status}</td><td>${k.last_used_at||''}</td><td><button class="secondary" onclick="disableKey(${k.id})">disable</button></td></tr>`).join('')}
-async function loadPricing(){const r=await Promise.resolve({json:async()=>({data:[{id:'deepseek-chat',provider:'DeepSeek',input_per_million_usd:'0.30',output_per_million_usd:'0.60',upstream_input_per_million_usd:'0.14',upstream_output_per_million_usd:'0.28'}]})}); const d=await r.json(); $('pricing').innerHTML='<tr><th>model</th><th>provider</th><th>input / 1M</th><th>output / 1M</th><th>upstream in</th><th>upstream out</th></tr>'+d.data.map(m=>`<tr><td>${m.id}</td><td>${m.provider}</td><td>$${m.input_per_million_usd}</td><td>$${m.output_per_million_usd}</td><td>$${m.upstream_input_per_million_usd}</td><td>$${m.upstream_output_per_million_usd}</td></tr>`).join('')}
-async function createKey(){const d=await post('/dashboard/api-keys',{name:'dashboard-key'}); $('newKey').innerHTML='New key, copy now: <code>'+d.api_key+'</code>'; await loadKeys()}
-async function disableKey(id){await patch('/dashboard/api-keys/'+id,{status:'disabled'}); await loadKeys()}
-async function checkout(amount){const d=await post('/billing/checkout-test',{amount_usd:amount}); $('checkout').innerHTML='Created test checkout order #'+d.id+' for $'+d.amount_usd+' <button onclick="markPaid('+d.id+')">Mark Paid</button>'; await loadBilling()}
-async function markPaid(id){const d=await post('/billing/checkout-test/'+id+'/mark-paid',{}); $('checkout').innerHTML='Order #'+d.id+' paid. Balance after: $'+Number(d.balance_after_usd).toFixed(6); await refreshAll()}
-async function loadBilling(){const o=await get('/billing/orders?limit=10'); $('orders').innerHTML='<tr><th>id</th><th>amount</th><th>status</th><th>provider</th><th>created</th></tr>'+o.data.map(x=>`<tr><td>${x.id}</td><td>$${x.amount_usd}</td><td>${x.status}</td><td>${x.provider}</td><td>${x.created_at}</td></tr>`).join(''); const t=await get('/billing/transactions?limit=10'); $('transactions').innerHTML='<tr><th>id</th><th>type</th><th>amount</th><th>balance after</th><th>created</th></tr>'+t.data.map(x=>`<tr><td>${x.id}</td><td>${x.type}</td><td>$${x.amount_usd}</td><td>$${Number(x.balance_after_usd).toFixed(6)}</td><td>${x.created_at}</td></tr>`).join('')}
-if($('sessionToken').value) refreshAll();
-</script><footer style="max-width:1000px;margin:40px auto;padding:20px;color:#94a3b8">Legal: <a href="legal/terms.html">Terms</a> · <a href="legal/privacy.html">Privacy</a> · <a href="legal/refund.html">Refund</a> · <a href="legal/acceptable-use.html">Acceptable Use</a></footer></body></html>
+const $ = id => document.getElementById(id);
+const defaultBase = location.hostname === 'localhost' || location.hostname === '127.0.0.1' ? 'http://127.0.0.1:8000' : '';
+$('apiBase').value = localStorage.getItem('apiBase') || defaultBase;
+$('sessionToken').value = localStorage.getItem('sessionToken') || '';
+
+function baseUrl() {
+  return $('apiBase').value.replace(/\/+$/, '');
+}
+function url(path) {
+  const base = baseUrl();
+  return base ? base + path : path;
+}
+function sessionHeaders() {
+  return {'Authorization': 'Bearer ' + $('sessionToken').value, 'Content-Type': 'application/json'};
+}
+function jsonHeaders() {
+  return {'Content-Type': 'application/json'};
+}
+function saveApiBase() {
+  localStorage.setItem('apiBase', baseUrl());
+  $('status').textContent = 'Backend URL saved.';
+}
+function saveSession() {
+  localStorage.setItem('sessionToken', $('sessionToken').value);
+  refreshAll();
+}
+function clearSession() {
+  localStorage.removeItem('sessionToken');
+  $('sessionToken').value = '';
+  $('status').textContent = 'Session cleared.';
+}
+function logout() {
+  clearSession();
+}
+async function get(path) {
+  const r = await fetch(url(path), {headers: sessionHeaders()});
+  if (!r.ok) throw new Error(await r.text());
+  return r.json();
+}
+async function post(path, body, auth = true) {
+  const r = await fetch(url(path), {method: 'POST', headers: auth ? sessionHeaders() : jsonHeaders(), body: JSON.stringify(body || {})});
+  if (!r.ok) throw new Error(await r.text());
+  return r.json();
+}
+async function patch(path, body) {
+  const r = await fetch(url(path), {method: 'PATCH', headers: sessionHeaders(), body: JSON.stringify(body || {})});
+  if (!r.ok) throw new Error(await r.text());
+  return r.json();
+}
+async function register() {
+  try {
+    const d = await post('/auth/register', {name: $('name').value, email: $('email').value, password: $('password').value}, false);
+    $('sessionToken').value = d.session_token;
+    localStorage.setItem('sessionToken', d.session_token);
+    $('authStatus').innerHTML = '<span class="ok">Registered. Initial balance $' + d.initial_balance_usd + '</span>';
+    $('initialKey').innerHTML = 'Initial API key, copy now: <code>' + d.initial_api_key + '</code>';
+    await refreshAll();
+  } catch (e) {
+    $('authStatus').innerHTML = '<span class="bad">' + e.message + '</span>';
+  }
+}
+async function login() {
+  try {
+    const d = await post('/auth/login', {email: $('email').value, password: $('password').value}, false);
+    $('sessionToken').value = d.session_token;
+    localStorage.setItem('sessionToken', d.session_token);
+    $('authStatus').innerHTML = '<span class="ok">Logged in</span>';
+    $('initialKey').innerHTML = '';
+    await refreshAll();
+  } catch (e) {
+    $('authStatus').innerHTML = '<span class="bad">' + e.message + '</span>';
+  }
+}
+async function refreshAll() {
+  try {
+    if (!baseUrl()) throw new Error('Set an API backend URL first.');
+    $('status').textContent = 'Loading...';
+    await Promise.all([loadBalance(), loadUsage(), loadKeys(), loadPricing(), loadBilling()]);
+    $('status').innerHTML = '<span class="ok">Connected</span>';
+  } catch (e) {
+    $('status').innerHTML = '<span class="bad">' + e.message + '</span>';
+  }
+}
+async function loadBalance() {
+  const d = await get('/dashboard/balance');
+  $('balance').textContent = '$' + Number(d.balance_usd).toFixed(6);
+}
+async function loadUsage() {
+  const d = await get('/dashboard/usage?limit=20');
+  const s = d.summary || {};
+  $('summary').innerHTML = `Requests: <strong>${s.requests || 0}</strong><br>Tokens: <strong>${s.total_tokens || 0}</strong><br>Charged: <strong>$${Number(s.charged_amount_usd || s.estimated_cost_usd || 0).toFixed(6)}</strong><br>Gross margin: <strong>$${Number(s.gross_margin_usd || 0).toFixed(6)}</strong>`;
+  $('usage').innerHTML = '<tr><th>time</th><th>model</th><th>tokens</th><th>charged</th><th>margin</th><th>latency</th></tr>' + (d.data || []).map(x => `<tr><td>${x.ts || ''}</td><td>${x.public_model || ''}</td><td>${x.total_tokens || 0}</td><td>$${Number(x.charged_amount_usd || x.estimated_cost_usd || 0).toFixed(8)}</td><td>$${Number(x.gross_margin_usd || 0).toFixed(8)}</td><td>${x.latency_ms || 0}ms</td></tr>`).join('');
+}
+async function loadKeys() {
+  const d = await get('/dashboard/api-keys');
+  $('keys').innerHTML = '<tr><th>id</th><th>name</th><th>prefix</th><th>status</th><th>last used</th><th>action</th></tr>' + (d.data || []).map(k => `<tr><td>${k.id}</td><td>${k.name}</td><td><code>${k.prefix}</code></td><td>${k.status}</td><td>${k.last_used_at || ''}</td><td><button class="secondary" onclick="disableKey(${k.id})">Disable</button></td></tr>`).join('');
+}
+async function loadPricing() {
+  let d;
+  try {
+    d = await get('/v1/pricing');
+  } catch {
+    d = {data: [{id: 'deepseek-chat', provider: 'DeepSeek', input_per_million_usd: '0.30', output_per_million_usd: '0.60', upstream_input_per_million_usd: '0.14', upstream_output_per_million_usd: '0.28'}]};
+  }
+  $('pricing').innerHTML = '<tr><th>model</th><th>provider</th><th>input / 1M</th><th>output / 1M</th><th>upstream in</th><th>upstream out</th></tr>' + (d.data || []).map(m => `<tr><td>${m.id}</td><td>${m.provider}</td><td>$${m.input_per_million_usd}</td><td>$${m.output_per_million_usd}</td><td>$${m.upstream_input_per_million_usd || ''}</td><td>$${m.upstream_output_per_million_usd || ''}</td></tr>`).join('');
+}
+async function createKey() {
+  const d = await post('/dashboard/api-keys', {name: 'dashboard-key'});
+  $('newKey').innerHTML = 'New key, copy now: <code>' + d.api_key + '</code>';
+  await loadKeys();
+}
+async function disableKey(id) {
+  await patch('/dashboard/api-keys/' + id, {status: 'disabled'});
+  await loadKeys();
+}
+async function checkout(amount) {
+  const d = await post('/billing/checkout-test', {amount_usd: amount});
+  $('checkout').innerHTML = 'Created test checkout order #' + d.id + ' for $' + d.amount_usd + ' <button onclick="markPaid(' + d.id + ')">Mark paid</button>';
+  await loadBilling();
+}
+async function markPaid(id) {
+  const d = await post('/billing/checkout-test/' + id + '/mark-paid', {});
+  $('checkout').innerHTML = 'Order #' + d.id + ' paid. Balance after: $' + Number(d.balance_after_usd).toFixed(6);
+  await refreshAll();
+}
+async function loadBilling() {
+  const o = await get('/billing/orders?limit=10');
+  $('orders').innerHTML = '<tr><th>id</th><th>amount</th><th>status</th><th>provider</th><th>created</th></tr>' + (o.data || []).map(x => `<tr><td>${x.id}</td><td>$${x.amount_usd}</td><td>${x.status}</td><td>${x.provider}</td><td>${x.created_at}</td></tr>`).join('');
+  const t = await get('/billing/transactions?limit=10');
+  $('transactions').innerHTML = '<tr><th>id</th><th>type</th><th>amount</th><th>balance after</th><th>created</th></tr>' + (t.data || []).map(x => `<tr><td>${x.id}</td><td>${x.type}</td><td>$${x.amount_usd}</td><td>$${Number(x.balance_after_usd).toFixed(6)}</td><td>${x.created_at}</td></tr>`).join('');
+}
+if ($('sessionToken').value && $('apiBase').value) refreshAll();
+</script>
+</body>
+</html>
