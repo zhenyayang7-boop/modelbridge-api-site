@@ -52,14 +52,14 @@
           <p class="eyebrow">Payment test</p>
           <h2>Use the $5 Dodo starter product for the first live checkout.</h2>
         </div>
-        <p class="muted">This checkout charges a real payment. Use it only when you are ready to test the Dodo payment flow. Balance crediting still depends on the deployed backend and webhook configuration.</p>
+        <p class="muted">This checkout charges a real payment. For automatic balance credit, start payment from the dashboard after logging in so the backend can create an order and attach metadata for the Dodo webhook.</p>
       </div>
       <div class="notice">
-        <strong>Dodo test product:</strong> ModelBridge API Starter Credits, Product ID <code>pdt_0NeIEoy0HVBS5Ni0kDd14</code>. The hosted checkout redirects back to the dashboard after payment.
+        <strong>Dodo test product:</strong> ModelBridge API Starter Credits, Product ID <code>pdt_0NeIEoy0HVBS5Ni0kDd14</code>. Direct product links can validate Dodo payment acceptance, but they do not attach a ModelBridge user/order for automatic crediting.
       </div>
       <div class="actions">
-        <a class="button accent" href="https://checkout.dodopayments.com/buy/pdt_0NeIEoy0HVBS5Ni0kDd14?quantity=1&redirect_url=https://modelbridgeapi.com%2Fdashboard.html">Open $5 Dodo Checkout</a>
-        <a class="button secondary" href="dashboard.html">Use Dashboard Checkout</a>
+        <a class="button accent" href="dashboard.html">Open Dashboard Checkout</a>
+        <a class="button secondary" href="docs/">Read setup guide</a>
       </div>
     </section>
     <section class="section">
@@ -71,7 +71,7 @@
     </section>
     <section class="section">
       <div class="notice">
-        <strong>Payment note.</strong> The $5 hosted Dodo checkout can validate payment acceptance and redirect. Automatic balance credit requires the Dodo webhook endpoint and product environment variables to be configured on the deployed backend.
+        <strong>Payment note.</strong> The $5 Dodo product is live. Automatic balance credit requires dashboard checkout, the Dodo webhook endpoint, and product environment variables to be configured on the deployed backend.
       </div>
     </section>
   </main>

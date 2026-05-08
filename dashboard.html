@@ -17,7 +17,7 @@
     <section class="section">
       <p class="eyebrow">Operator dashboard</p>
       <h1>Register, log in, issue keys, track usage.</h1>
-      <p class="lead">This dashboard can talk to a local or deployed backend. Save the backend URL first, then register or log in. Use the Dodo checkout only when you are ready for a real payment test.</p>
+      <p class="lead">This dashboard can talk to a local or deployed backend. Save the backend URL first, then register or log in. Start Dodo checkout here so the backend can attach the order metadata needed for automatic balance credit.</p>
     </section>
 
     <section class="section">
@@ -82,13 +82,13 @@
     </section>
 
     <section class="section">
-      <div class="section-head"><div><p class="eyebrow">Billing</p><h2>Dodo live checkout and local test checkout</h2></div><p class="muted">The Dodo button opens a real checkout through the configured backend. Manual test checkout is for local balance-ledger validation only.</p></div>
+      <div class="section-head"><div><p class="eyebrow">Billing</p><h2>Dodo live checkout and local test checkout</h2></div><p class="muted">The Dodo button creates a backend order, opens real checkout, and lets the webhook credit the account after payment succeeds.</p></div>
       <div class="notice">
-        <strong>Before paying:</strong> confirm the backend URL is the deployed API, the Dodo product ID is configured, and the webhook endpoint is reachable. The direct hosted $5 link on the pricing page can test Dodo payment acceptance, but automatic balance credit still requires webhook configuration.
+        <strong>Before paying:</strong> confirm the backend URL is the deployed API, the Dodo product ID is configured, and the webhook endpoint is reachable. Do not use direct product links for customer payments because they bypass ModelBridge order metadata.
       </div>
       <div class="actions">
         <button class="accent" onclick="dodoCheckout(5)">Open Dodo $5 checkout</button>
-        <a class="button secondary" href="pricing.html#payment-test">Direct hosted $5 link</a>
+        <a class="button secondary" href="pricing.html#payment-test">Pricing details</a>
       </div>
       <div id="dodoCheckout" class="keyrow ok"></div>
       <h3>Local ledger test</h3>
