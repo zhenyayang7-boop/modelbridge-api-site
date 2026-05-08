@@ -17,7 +17,7 @@
     <section class="section">
       <p class="eyebrow">Operator dashboard</p>
       <h1>Register, log in, issue keys, track usage.</h1>
-      <p class="lead">This dashboard can talk to a local or deployed backend. Save the backend URL first, then register or log in.</p>
+      <p class="lead">This dashboard can talk to a local or deployed backend. Save the backend URL first, then register or log in. Use the Dodo checkout only when you are ready for a real payment test.</p>
     </section>
 
     <section class="section">
@@ -36,8 +36,8 @@
         </div>
         <div class="cell span-4">
           <div class="label">Current mode</div>
-          <p><strong>MVP dashboard.</strong></p>
-          <p class="muted">Production checkout remains disabled until payment review and webhook verification are complete.</p>
+          <p><strong>Controlled MVP test.</strong></p>
+          <p class="muted">Use compliant upstream APIs and prepaid credits. Do not route through shared subscriptions or account pools.</p>
         </div>
       </div>
     </section>
@@ -82,7 +82,16 @@
     </section>
 
     <section class="section">
-      <div class="section-head"><div><p class="eyebrow">Billing test</p><h2>Manual test checkout</h2></div><p class="muted">Use only for local/MVP validation while Dodo production checkout is still under review.</p></div>
+      <div class="section-head"><div><p class="eyebrow">Billing</p><h2>Dodo live checkout and local test checkout</h2></div><p class="muted">The Dodo button opens a real checkout through the configured backend. Manual test checkout is for local balance-ledger validation only.</p></div>
+      <div class="notice">
+        <strong>Before paying:</strong> confirm the backend URL is the deployed API, the Dodo product ID is configured, and the webhook endpoint is reachable. The direct hosted $5 link on the pricing page can test Dodo payment acceptance, but automatic balance credit still requires webhook configuration.
+      </div>
+      <div class="actions">
+        <button class="accent" onclick="dodoCheckout(5)">Open Dodo $5 checkout</button>
+        <a class="button secondary" href="pricing.html#payment-test">Direct hosted $5 link</a>
+      </div>
+      <div id="dodoCheckout" class="keyrow ok"></div>
+      <h3>Local ledger test</h3>
       <div class="actions">
         <button onclick="checkout(5)">$5 credits</button>
         <button onclick="checkout(10)">$10 credits</button>
@@ -227,6 +236,16 @@ async function checkout(amount) {
   const d = await post('/billing/checkout-test', {amount_usd: amount});
   $('checkout').innerHTML = 'Created test checkout order #' + d.id + ' for $' + d.amount_usd + ' <button onclick="markPaid(' + d.id + ')">Mark paid</button>';
   await loadBilling();
+}
+async function dodoCheckout(amount) {
+  try {
+    const d = await post('/billing/dodo/checkout', {amount_usd: amount});
+    $('dodoCheckout').innerHTML = 'Dodo checkout order #' + d.id + ': <a href="' + d.checkout_url + '">open checkout</a>';
+    if (d.checkout_url) window.open(d.checkout_url, '_blank', 'noopener');
+    await loadBilling();
+  } catch (e) {
+    $('dodoCheckout').innerHTML = '<span class="bad">' + e.message + '</span>';
+  }
 }
 async function markPaid(id) {
   const d = await post('/billing/checkout-test/' + id + '/mark-paid', {});

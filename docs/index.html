@@ -16,14 +16,29 @@
   <main class="shell">
     <section class="section">
       <p class="eyebrow">Quickstart</p>
-      <h1>Use the OpenAI SDK with a ModelBridge key.</h1>
-      <p class="lead">Register or log in from the dashboard, create a virtual API key, then point your SDK at the backend API URL configured for your deployment.</p>
+      <h1>Use Chinese AI models with the OpenAI SDK.</h1>
+      <p class="lead">Register or log in from the dashboard, create a virtual API key, then point your SDK at the ModelBridge backend. The first verified route is `deepseek-chat`; additional Chinese routes are added only after provider and billing checks.</p>
     </section>
     <section class="section">
       <div class="feature-grid">
         <div class="cell span-4"><div class="number">1</div><h3>Set backend URL</h3><p class="muted">Open the dashboard and save the API backend address for local or deployed testing.</p></div>
         <div class="cell span-4"><div class="number">2</div><h3>Register or log in</h3><p class="muted">A valid backend returns a session token and lets you create virtual API keys.</p></div>
         <div class="cell span-4"><div class="number">3</div><h3>Call chat completions</h3><p class="muted">Use the OpenAI client with `deepseek-chat` and your virtual key.</p></div>
+      </div>
+    </section>
+    <section class="section">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">Route policy</p>
+          <h2>Use compliant upstream APIs, not shared subscriptions.</h2>
+        </div>
+        <p class="muted">ModelBridge is not designed around account pools, subscription resale, browser reverse engineering, or unlimited-access claims. Routes should be backed by official APIs, cloud providers, or verified partner channels.</p>
+      </div>
+      <div class="feature-grid">
+        <div class="cell span-3"><h3>Current</h3><p class="muted">`deepseek-chat` starts the catalog while billing and usage ledgers are tested.</p></div>
+        <div class="cell span-3"><h3>Next</h3><p class="muted">Qwen, Kimi, GLM, Doubao, SiliconFlow, and PPIO routes can be added after cost and reliability checks.</p></div>
+        <div class="cell span-3"><h3>Future</h3><p class="muted">Image, speech, video, and digital-human APIs should use async task records and explicit provider status.</p></div>
+        <div class="cell span-3"><h3>Billing</h3><p class="muted">Prepaid credits are charged by visible model rates and stored in the usage ledger.</p></div>
       </div>
     </section>
     <section class="section">

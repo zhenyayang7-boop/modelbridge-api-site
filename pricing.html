@@ -16,8 +16,8 @@
   <main class="shell">
     <section class="section">
       <p class="eyebrow">Pricing</p>
-      <h1>Prepaid credits, clear token rates.</h1>
-      <p class="lead">Production payment is not enabled until payment-provider review is complete. MVP balances can be issued manually or through test checkout while the gateway is being verified.</p>
+      <h1>Prepaid credits for Chinese model routes.</h1>
+      <p class="lead">Start with a controlled $5 Dodo checkout test, then use dashboard credits against OpenAI-compatible routes as the backend and webhook are verified.</p>
     </section>
     <section class="section">
       <div class="table-wrap">
@@ -30,20 +30,48 @@
               <td><strong>$0.60</strong> / 1M tokens</td>
               <td>MVP route</td>
             </tr>
+            <tr>
+              <td><strong>Qwen / Kimi / GLM / Doubao</strong><br><span class="muted">Candidate Chinese model routes</span></td>
+              <td>To be published after provider verification</td>
+              <td>To be published after provider verification</td>
+              <td>Planned</td>
+            </tr>
+            <tr>
+              <td><strong>Image / speech / video</strong><br><span class="muted">Chinese multimodal stack</span></td>
+              <td>Async task pricing planned</td>
+              <td>Async task pricing planned</td>
+              <td>Research</td>
+            </tr>
           </tbody>
         </table>
       </div>
     </section>
+    <section id="payment-test" class="section">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">Payment test</p>
+          <h2>Use the $5 Dodo starter product for the first live checkout.</h2>
+        </div>
+        <p class="muted">This checkout charges a real payment. Use it only when you are ready to test the Dodo payment flow. Balance crediting still depends on the deployed backend and webhook configuration.</p>
+      </div>
+      <div class="notice">
+        <strong>Dodo test product:</strong> ModelBridge API Starter Credits, Product ID <code>pdt_0NeIEoy0HVBS5Ni0kDd14</code>. The hosted checkout redirects back to the dashboard after payment.
+      </div>
+      <div class="actions">
+        <a class="button accent" href="https://checkout.dodopayments.com/buy/pdt_0NeIEoy0HVBS5Ni0kDd14?quantity=1&redirect_url=https://modelbridgeapi.com%2Fdashboard.html">Open $5 Dodo Checkout</a>
+        <a class="button secondary" href="dashboard.html">Use Dashboard Checkout</a>
+      </div>
+    </section>
     <section class="section">
       <div class="pricing-grid">
-        <div class="cell span-4"><div class="label">Starter</div><h2>$5</h2><p class="muted">Small integration tests and SDK verification.</p></div>
-        <div class="cell span-4"><div class="label">Builder</div><h2>$10</h2><p class="muted">Prototype agents, prompt tests, and early product experiments.</p></div>
-        <div class="cell span-4"><div class="label">Operator</div><h2>$20</h2><p class="muted">Longer test runs and multiple app keys during MVP validation.</p></div>
+        <div class="cell span-4"><div class="label">Starter</div><h2>$5</h2><p class="muted">Live Dodo checkout product for payment and redirect validation.</p></div>
+        <div class="cell span-4"><div class="label">Builder</div><h2>$10</h2><p class="muted">Next credit package after the first live payment and webhook are verified.</p></div>
+        <div class="cell span-4"><div class="label">Operator</div><h2>$20</h2><p class="muted">Longer test runs and multiple app keys after backend deployment is stable.</p></div>
       </div>
     </section>
     <section class="section">
       <div class="notice">
-        <strong>Payment note.</strong> Public checkout opens after Dodo verification, domain binding, backend deployment, webhook verification, and one successful end-to-end payment test.
+        <strong>Payment note.</strong> The $5 hosted Dodo checkout can validate payment acceptance and redirect. Automatic balance credit requires the Dodo webhook endpoint and product environment variables to be configured on the deployed backend.
       </div>
     </section>
   </main>
