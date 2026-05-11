@@ -8,10 +8,10 @@ Current positioning:
 OpenAI-compatible Chinese AI model gateway for global developers.
 ```
 
-Payment test:
+Customer path:
 
-- $5 Dodo hosted checkout product: `pdt_0NeIEoy0HVBS5Ni0kDd14`
-- Public checkout link is exposed from `pricing.html#payment-test`.
-- Dashboard also includes a Dodo checkout button for deployed backend validation.
-- Direct hosted checkout validates Dodo payment acceptance and redirect.
-- Automatic balance credit still requires deployed backend env vars and webhook verification.
+- Public pages explain DeepSeek API access, pricing, docs, and legal terms.
+- Account, recharge, API keys, balance, and usage live at `https://panel.modelbridgeapi.com`.
+- Hosted API calls use `https://api.modelbridgeapi.com/v1`.
+- `dashboard.html` is retained only as a legacy redirect to the customer console.
+- Dodo checkout and automatic balance credit should be configured inside the formal customer console path, not a public standalone test page.

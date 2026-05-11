@@ -4,74 +4,98 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Pricing - ModelBridge API</title>
+  <meta name="description" content="DeepSeek API pricing and prepaid credit packages for ModelBridge API." />
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
   <header class="topbar">
     <div class="shell nav">
       <a class="brand" href="index.html"><span class="mark">MB</span><span>ModelBridge API</span></a>
-      <nav class="navlinks"><a href="index.html">Home</a><a href="docs/">Docs</a><a href="dashboard.html">Dashboard</a></nav>
+      <nav class="navlinks"><a href="index.html">Home</a><a href="index.html#models">Models</a><a href="docs/">Docs</a><a class="nav-cta" href="https://panel.modelbridgeapi.com">Console</a></nav>
     </div>
   </header>
   <main class="shell">
     <section class="section">
       <p class="eyebrow">Pricing</p>
-      <h1>Prepaid credits for Chinese model routes.</h1>
-      <p class="lead">Start with a controlled $5 Dodo checkout test, then use dashboard credits against OpenAI-compatible routes as the backend and webhook are verified.</p>
+      <h1>DeepSeek API pricing with prepaid credits.</h1>
+      <p class="lead">Recharge in the customer console, create an API key, and call DeepSeek through the hosted OpenAI-compatible base URL.</p>
+      <div class="actions">
+        <a class="button accent" href="https://panel.modelbridgeapi.com">Open Customer Console</a>
+        <a class="button secondary" href="docs/">Read Quickstart</a>
+      </div>
     </section>
+
     <section class="section">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">Model rates</p>
+          <h2>Start with the active DeepSeek route.</h2>
+        </div>
+        <p class="muted">Additional models should be published only after provider verification, fallback behavior, and billing records are ready.</p>
+      </div>
       <div class="table-wrap">
         <table>
-          <thead><tr><th>Model</th><th>Input</th><th>Output</th><th>Status</th></tr></thead>
+          <thead><tr><th>Model</th><th>Input</th><th>Output</th><th>Status</th><th>Use case</th></tr></thead>
           <tbody>
             <tr>
-              <td><strong>deepseek-chat</strong><br><span class="muted">Initial Chinese model route</span></td>
+              <td><strong>deepseek-chat</strong><br><span class="muted">DeepSeek Chat</span></td>
               <td><strong>$0.30</strong> / 1M tokens</td>
               <td><strong>$0.60</strong> / 1M tokens</td>
-              <td>MVP route</td>
+              <td><span class="pill live">Live</span></td>
+              <td>Chat, coding help, agents, OpenAI SDK migration</td>
             </tr>
             <tr>
-              <td><strong>Qwen / Kimi / GLM / Doubao</strong><br><span class="muted">Candidate Chinese model routes</span></td>
-              <td>To be published after provider verification</td>
-              <td>To be published after provider verification</td>
-              <td>Planned</td>
+              <td><strong>deepseek-reasoner</strong><br><span class="muted">Reasoning route</span></td>
+              <td>Pending verification</td>
+              <td>Pending verification</td>
+              <td><span class="pill planned">Planned</span></td>
+              <td>Reasoning, planning, hard coding tasks</td>
             </tr>
             <tr>
-              <td><strong>Image / speech / video</strong><br><span class="muted">Chinese multimodal stack</span></td>
-              <td>Async task pricing planned</td>
-              <td>Async task pricing planned</td>
-              <td>Research</td>
+              <td><strong>Qwen / Kimi / GLM / Doubao</strong><br><span class="muted">Future Chinese routes</span></td>
+              <td>To be published</td>
+              <td>To be published</td>
+              <td><span class="pill planned">Roadmap</span></td>
+              <td>Provider-specific workloads after route checks</td>
             </tr>
           </tbody>
         </table>
       </div>
     </section>
-    <section id="payment-test" class="section">
+
+    <section class="section">
       <div class="section-head">
         <div>
-          <p class="eyebrow">Payment test</p>
-          <h2>Use the $5 Dodo starter product for the first live checkout.</h2>
+          <p class="eyebrow">Credits</p>
+          <h2>Recharge in the console, not a public test page.</h2>
         </div>
-        <p class="muted">This checkout charges a real payment. For automatic balance credit, start payment from the dashboard after logging in so the backend can create an order and attach metadata for the Dodo webhook.</p>
+        <p class="muted">The public site explains packages. The customer console owns checkout, balance, API keys, usage, and invoices.</p>
       </div>
-      <div class="notice">
-        <strong>Dodo test product:</strong> ModelBridge API Starter Credits, Product ID <code>pdt_0NeIEoy0HVBS5Ni0kDd14</code>. Direct product links can validate Dodo payment acceptance, but they do not attach a ModelBridge user/order for automatic crediting.
-      </div>
-      <div class="actions">
-        <a class="button accent" href="dashboard.html">Open Dashboard Checkout</a>
-        <a class="button secondary" href="docs/">Read setup guide</a>
-      </div>
-    </section>
-    <section class="section">
       <div class="pricing-grid">
-        <div class="cell span-4"><div class="label">Starter</div><h2>$5</h2><p class="muted">Live Dodo checkout product for payment and redirect validation.</p></div>
-        <div class="cell span-4"><div class="label">Builder</div><h2>$10</h2><p class="muted">Next credit package after the first live payment and webhook are verified.</p></div>
-        <div class="cell span-4"><div class="label">Operator</div><h2>$20</h2><p class="muted">Longer test runs and multiple app keys after backend deployment is stable.</p></div>
+        <div class="cell span-4">
+          <div class="label">Starter</div>
+          <h2>$5</h2>
+          <p class="muted">Small DeepSeek tests, SDK migration, and first production smoke checks.</p>
+          <a class="button accent" href="https://panel.modelbridgeapi.com">Recharge</a>
+        </div>
+        <div class="cell span-4">
+          <div class="label">Builder</div>
+          <h2>$20</h2>
+          <p class="muted">Longer app tests, repeated prompts, and early user traffic.</p>
+          <a class="button accent" href="https://panel.modelbridgeapi.com">Recharge</a>
+        </div>
+        <div class="cell span-4">
+          <div class="label">Operator</div>
+          <h2>Custom</h2>
+          <p class="muted">Higher volume, route planning, and upcoming Chinese multimodal coverage.</p>
+          <a class="button secondary" href="docs/">Review docs</a>
+        </div>
       </div>
     </section>
+
     <section class="section">
       <div class="notice">
-        <strong>Payment note.</strong> The $5 Dodo product is live. Automatic balance credit requires dashboard checkout, the Dodo webhook endpoint, and product environment variables to be configured on the deployed backend.
+        <strong>Formal customer flow:</strong> open the console, register or sign in, recharge credits, create an API key, then call <code>https://api.modelbridgeapi.com/v1</code>. The old standalone dashboard checkout is no longer part of the customer path.
       </div>
     </section>
   </main>

@@ -4,28 +4,77 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Docs - ModelBridge API</title>
+  <meta name="description" content="Quickstart for calling DeepSeek through ModelBridge API with an OpenAI-compatible client." />
   <link rel="stylesheet" href="../styles.css" />
 </head>
 <body>
   <header class="topbar">
     <div class="shell nav">
       <a class="brand" href="../index.html"><span class="mark">MB</span><span>ModelBridge API</span></a>
-      <nav class="navlinks"><a href="../pricing.html">Pricing</a><a href="../dashboard.html">Dashboard</a><a href="../legal/terms.html">Legal</a></nav>
+      <nav class="navlinks"><a href="../pricing.html">Pricing</a><a href="../index.html#models">Models</a><a class="nav-cta" href="https://panel.modelbridgeapi.com">Console</a><a href="../legal/terms.html">Legal</a></nav>
     </div>
   </header>
   <main class="shell">
     <section class="section">
       <p class="eyebrow">Quickstart</p>
-      <h1>Use Chinese AI models with the OpenAI SDK.</h1>
-      <p class="lead">Register or log in from the dashboard, create a virtual API key, then point your SDK at the ModelBridge backend. The first verified route is `deepseek-chat`; additional Chinese routes are added only after provider and billing checks.</p>
-    </section>
-    <section class="section">
-      <div class="feature-grid">
-        <div class="cell span-4"><div class="number">1</div><h3>Set backend URL</h3><p class="muted">Open the dashboard and save the API backend address for local or deployed testing.</p></div>
-        <div class="cell span-4"><div class="number">2</div><h3>Register or log in</h3><p class="muted">A valid backend returns a session token and lets you create virtual API keys.</p></div>
-        <div class="cell span-4"><div class="number">3</div><h3>Call chat completions</h3><p class="muted">Use the OpenAI client with `deepseek-chat` and your virtual key.</p></div>
+      <h1>Call DeepSeek with the OpenAI SDK.</h1>
+      <p class="lead">Create an API key in the customer console, set the hosted base URL, and start with <code>deepseek-chat</code>. More Chinese routes are added only after provider and billing checks.</p>
+      <div class="actions">
+        <a class="button accent" href="https://panel.modelbridgeapi.com">Create API Key</a>
+        <a class="button secondary" href="../pricing.html">View Pricing</a>
       </div>
     </section>
+
+    <section class="section">
+      <div class="flow-grid">
+        <div class="cell span-3"><div class="number">1</div><h3>Sign in</h3><p class="muted">Use the customer console at <a href="https://panel.modelbridgeapi.com">panel.modelbridgeapi.com</a>.</p></div>
+        <div class="cell span-3"><div class="number">2</div><h3>Recharge</h3><p class="muted">Keep prepaid balance available before running production traffic.</p></div>
+        <div class="cell span-3"><div class="number">3</div><h3>Create token</h3><p class="muted">Generate an API key and store it in your server environment.</p></div>
+        <div class="cell span-3"><div class="number">4</div><h3>Call API</h3><p class="muted">Use <code>https://api.modelbridgeapi.com/v1</code> as the base URL.</p></div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">Python</p>
+          <h2>OpenAI-compatible client</h2>
+        </div>
+        <p class="muted">Replace the key with the token created in the console.</p>
+      </div>
+      <pre class="code">pip install openai
+
+from openai import OpenAI
+
+client = OpenAI(
+    api_key="YOUR_MODELBRIDGE_API_KEY",
+    base_url="https://api.modelbridgeapi.com/v1"
+)
+
+response = client.chat.completions.create(
+    model="deepseek-chat",
+    messages=[{"role": "user", "content": "Say hello"}]
+)
+print(response.choices[0].message.content)</pre>
+    </section>
+
+    <section class="section">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">REST</p>
+          <h2>Chat completions</h2>
+        </div>
+        <p class="muted">The hosted API follows the OpenAI-compatible <code>/v1</code> shape for supported routes.</p>
+      </div>
+      <pre class="code">curl https://api.modelbridgeapi.com/v1/chat/completions \
+  -H "Authorization: Bearer YOUR_MODELBRIDGE_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "model": "deepseek-chat",
+    "messages": [{"role":"user","content":"Hello"}]
+  }'</pre>
+    </section>
+
     <section class="section">
       <div class="section-head">
         <div>
@@ -35,49 +84,22 @@
         <p class="muted">ModelBridge is not designed around account pools, subscription resale, browser reverse engineering, or unlimited-access claims. Routes should be backed by official APIs, cloud providers, or verified partner channels.</p>
       </div>
       <div class="feature-grid">
-        <div class="cell span-3"><h3>Current</h3><p class="muted">`deepseek-chat` starts the catalog while billing and usage ledgers are tested.</p></div>
-        <div class="cell span-3"><h3>Next</h3><p class="muted">Qwen, Kimi, GLM, Doubao, SiliconFlow, and PPIO routes can be added after cost and reliability checks.</p></div>
+        <div class="cell span-3"><h3>Current</h3><p class="muted"><code>deepseek-chat</code> starts the catalog while billing and usage records are validated.</p></div>
+        <div class="cell span-3"><h3>Next</h3><p class="muted">DeepSeek reasoning and more Chinese text models after cost and reliability checks.</p></div>
         <div class="cell span-3"><h3>Future</h3><p class="muted">Image, speech, video, and digital-human APIs should use async task records and explicit provider status.</p></div>
         <div class="cell span-3"><h3>Billing</h3><p class="muted">Prepaid credits are charged by visible model rates and stored in the usage ledger.</p></div>
       </div>
     </section>
-    <section class="section">
-      <h2>Python</h2>
-      <pre class="code">pip install openai
 
-from openai import OpenAI
-
-client = OpenAI(
-    api_key="sk-mb-your-virtual-api-key",
-    base_url="https://YOUR_API_BACKEND/v1"
-)
-
-response = client.chat.completions.create(
-    model="deepseek-chat",
-    messages=[{"role": "user", "content": "Say hello"}]
-)
-print(response.choices[0].message.content)</pre>
-    </section>
-    <section class="section">
-      <h2>REST</h2>
-      <pre class="code">curl https://YOUR_API_BACKEND/v1/chat/completions \
-  -H "Authorization: Bearer sk-mb-your-virtual-api-key" \
-  -H "Content-Type: application/json" \
-  -d '{
-    "model": "deepseek-chat",
-    "messages": [{"role":"user","content":"Hello"}]
-  }'</pre>
-    </section>
     <section class="section">
       <div class="table-wrap">
         <table>
-          <thead><tr><th>Endpoint</th><th>Purpose</th></tr></thead>
+          <thead><tr><th>Area</th><th>Where it lives</th><th>Purpose</th></tr></thead>
           <tbody>
-            <tr><td><code>POST /auth/register</code></td><td>Create an account and initial virtual API key.</td></tr>
-            <tr><td><code>POST /auth/login</code></td><td>Create a dashboard session token.</td></tr>
-            <tr><td><code>GET /v1/pricing</code></td><td>Fetch model pricing.</td></tr>
-            <tr><td><code>POST /v1/chat/completions</code></td><td>OpenAI-compatible chat completions.</td></tr>
-            <tr><td><code>GET /dashboard/usage</code></td><td>Read usage and cost records for the account.</td></tr>
+            <tr><td>Register / login</td><td><a href="https://panel.modelbridgeapi.com">Customer console</a></td><td>Create and access a ModelBridge account.</td></tr>
+            <tr><td>Recharge / balance</td><td><a href="https://panel.modelbridgeapi.com">Customer console</a></td><td>Add prepaid credits and monitor remaining balance.</td></tr>
+            <tr><td>API keys</td><td><a href="https://panel.modelbridgeapi.com">Customer console</a></td><td>Create, rotate, and disable tokens.</td></tr>
+            <tr><td><code>POST /v1/chat/completions</code></td><td><code>https://api.modelbridgeapi.com/v1</code></td><td>OpenAI-compatible DeepSeek calls.</td></tr>
           </tbody>
         </table>
       </div>
