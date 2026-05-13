@@ -3,11 +3,29 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>ModelBridge API</title>
-  <meta name="description" content="DeepSeek-first, OpenAI-compatible API access for global developers, with prepaid credits, API keys, usage tracking, and a formal customer console." />
+  <title>ModelBridge API — DeepSeek for global builders</title>
+  <meta name="description" content="DeepSeek via the OpenAI SDK. Prepaid USD credits, instant API keys, no Chinese accounts to juggle." />
+
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
+  <link rel="apple-touch-icon" href="assets/favicon.svg" />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://modelbridgeapi.com/" />
+  <meta property="og:title" content="ModelBridge API — DeepSeek for global builders" />
+  <meta property="og:description" content="DeepSeek via the OpenAI SDK. Prepaid USD credits, instant API keys, no Chinese accounts to juggle." />
+  <meta property="og:image" content="https://modelbridgeapi.com/assets/og-image.svg" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="ModelBridge API — DeepSeek for global builders" />
+  <meta name="twitter:description" content="DeepSeek via the OpenAI SDK. Prepaid USD credits, instant API keys, no Chinese accounts to juggle." />
+  <meta name="twitter:image" content="https://modelbridgeapi.com/assets/og-image.svg" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
+  <a class="skip-link" href="#main">Skip to content</a>
   <header class="topbar">
     <div class="shell nav">
       <a class="brand" href="index.html"><span class="mark">MB</span><span>ModelBridge API</span></a>
@@ -15,32 +33,45 @@
         <a href="#models">Models</a>
         <a href="pricing.html">Pricing</a>
         <a href="docs/">Docs</a>
-        <a class="nav-cta" href="https://panel.modelbridgeapi.com">Console</a>
         <a href="legal/terms.html">Legal</a>
+        <a class="nav-cta" href="https://panel.modelbridgeapi.com">Console →</a>
       </nav>
     </div>
   </header>
 
-  <main class="shell">
+  <main class="shell" id="main">
     <section class="hero">
+      <span class="orb orb-cyan" aria-hidden="true"></span>
+      <span class="orb orb-purple" aria-hidden="true"></span>
+      <span class="orb orb-magenta" aria-hidden="true"></span>
+
       <div class="hero-main">
-        <p class="eyebrow">DeepSeek API for global builders</p>
-        <h1>Chinese models, OpenAI-compatible.</h1>
-        <p class="lead">Start with DeepSeek Chat through a familiar <code>/v1</code> API, pay with prepaid USD credits, create API keys in the customer console, and track usage without juggling Chinese provider accounts.</p>
-        <div class="actions">
+        <p class="eyebrow reveal">DeepSeek API for global builders</p>
+        <h1 class="reveal reveal-delay-1">Chinese models, <span class="grad">OpenAI-compatible.</span></h1>
+        <p class="lead reveal reveal-delay-2">DeepSeek via the OpenAI SDK. Prepaid USD credits, instant API keys, no Chinese accounts to juggle.</p>
+        <div class="actions reveal reveal-delay-3">
           <a class="button accent" href="https://panel.modelbridgeapi.com">Get API Key</a>
           <a class="button secondary" href="pricing.html">View DeepSeek Pricing</a>
         </div>
+
+        <div class="hero-terminal reveal reveal-delay-4" data-typewriter>
+          <div class="term-bar">
+            <span class="dot r"></span><span class="dot y"></span><span class="dot g"></span>
+            <span class="term-title">~/modelbridge — bash</span>
+          </div>
+          <div class="term-body" id="term-body"></div>
+        </div>
       </div>
+
       <aside class="hero-side">
-        <div class="status-grid">
+        <div class="status-grid reveal reveal-delay-2">
           <div class="cell span-12">
             <div class="label">Customer path</div>
             <p><strong>Register, recharge, create a key, call the API.</strong> The public site explains the product. The customer console handles account, credits, tokens, usage, and billing.</p>
           </div>
           <div class="cell span-6">
             <div class="number">01</div>
-            <p><strong>Base URL</strong><br><span class="muted">https://api.modelbridgeapi.com/v1</span></p>
+            <p><strong>Base URL</strong><br><span class="muted">api.modelbridgeapi.com/v1</span></p>
           </div>
           <div class="cell span-6">
             <div class="number">02</div>
@@ -57,13 +88,13 @@
     <section id="models" class="section">
       <div class="section-head">
         <div>
-          <p class="eyebrow">Model store</p>
-          <h2>Start with the routes customers can understand.</h2>
+          <p class="eyebrow reveal">Model store</p>
+          <h2 class="reveal reveal-delay-1">Start with the routes <span class="grad">customers understand.</span></h2>
         </div>
-        <p class="muted">A focused catalog beats a noisy marketplace during launch. Each model card shows status, pricing, and the action that matters: create a key in the console.</p>
+        <p class="muted reveal reveal-delay-2">A focused catalog beats a noisy marketplace during launch. Each model card shows status, pricing, and the action that matters: create a key in the console.</p>
       </div>
       <div class="model-store">
-        <article class="model-card is-live">
+        <article class="model-card is-live reveal reveal-delay-1" data-tilt>
           <div class="model-meta">
             <span class="pill live">Live route</span>
             <span class="pill">OpenAI-compatible</span>
@@ -79,7 +110,7 @@
             <a class="button secondary" href="docs/">Documentation</a>
           </div>
         </article>
-        <article class="model-card">
+        <article class="model-card reveal reveal-delay-2" data-tilt>
           <div class="model-meta">
             <span class="pill planned">Planned</span>
             <span class="pill">Reasoning</span>
@@ -94,7 +125,7 @@
             <a class="button secondary" href="pricing.html">Watch Pricing</a>
           </div>
         </article>
-        <article class="model-card">
+        <article class="model-card reveal reveal-delay-3" data-tilt>
           <div class="model-meta">
             <span class="pill planned">Later</span>
             <span class="pill">China stack</span>
@@ -115,63 +146,65 @@
     <section class="section">
       <div class="section-head">
         <div>
-          <p class="eyebrow">How it works</p>
-          <h2>One clean customer path, no test dashboard detours.</h2>
+          <p class="eyebrow reveal">How it works</p>
+          <h2 class="reveal reveal-delay-1">One clean customer path, <span class="grad">no detours.</span></h2>
         </div>
-        <p class="muted">The public website should sell and explain. The console should handle identity, credits, keys, and usage. That keeps the product path legible.</p>
+        <p class="muted reveal reveal-delay-2">The public website should sell and explain. The console should handle identity, credits, keys, and usage. That keeps the product path legible.</p>
       </div>
       <div class="flow-grid">
-        <div class="cell span-3"><div class="number">1</div><h3>Open console</h3><p class="muted">Register or sign in at <a href="https://panel.modelbridgeapi.com">panel.modelbridgeapi.com</a>.</p></div>
-        <div class="cell span-3"><div class="number">2</div><h3>Add credits</h3><p class="muted">Recharge prepaid balance before production traffic.</p></div>
-        <div class="cell span-3"><div class="number">3</div><h3>Create API key</h3><p class="muted">Generate a token and keep it secret in your app environment.</p></div>
-        <div class="cell span-3"><div class="number">4</div><h3>Call DeepSeek</h3><p class="muted">Use the OpenAI SDK against <code>https://api.modelbridgeapi.com/v1</code>.</p></div>
+        <div class="cell span-3 reveal reveal-delay-1"><div class="number">1</div><h3>Open console</h3><p class="muted">Register or sign in at <a href="https://panel.modelbridgeapi.com">panel.modelbridgeapi.com</a>.</p></div>
+        <div class="cell span-3 reveal reveal-delay-2"><div class="number">2</div><h3>Add credits</h3><p class="muted">Recharge prepaid balance before production traffic.</p></div>
+        <div class="cell span-3 reveal reveal-delay-3"><div class="number">3</div><h3>Create API key</h3><p class="muted">Generate a token and keep it secret in your app environment.</p></div>
+        <div class="cell span-3 reveal reveal-delay-4"><div class="number">4</div><h3>Call DeepSeek</h3><p class="muted">Use the OpenAI SDK against <code>api.modelbridgeapi.com/v1</code>.</p></div>
       </div>
     </section>
 
     <section class="section">
       <div class="section-head">
         <div>
-          <p class="eyebrow">Positioning</p>
-          <h2>Not an account pool. A focused bridge to Chinese models.</h2>
+          <p class="eyebrow reveal">Positioning</p>
+          <h2 class="reveal reveal-delay-1">A focused bridge to <span class="grad">Chinese models.</span></h2>
         </div>
-        <p class="muted">ModelBridge should win a narrower job than all-model routers: make Chinese model access clear, payable, and usable for global developers.</p>
+        <p class="muted reveal reveal-delay-2">ModelBridge wins a narrower job than all-model routers: make Chinese model access clear, payable, and usable for global developers.</p>
       </div>
       <div class="feature-grid">
-        <div class="cell span-3"><h3>No account sharing</h3><p class="muted">Use official or compliant upstream APIs. Do not rely on shared subscriptions, browser reverse engineering, or hidden account pools.</p></div>
-        <div class="cell span-3"><h3>DeepSeek first</h3><p class="muted">Start with the most concrete route, then add more Chinese providers only after verification.</p></div>
-        <div class="cell span-3"><h3>Usage ledger</h3><p class="muted">Track requests, tokens, charged amount, latency, and route behavior in the customer console.</p></div>
-        <div class="cell span-3"><h3>Prepaid credits</h3><p class="muted">Keep billing exposure explicit for developers testing Chinese model routes.</p></div>
+        <div class="cell span-3 reveal reveal-delay-1"><h3>No account sharing</h3><p class="muted">Use official or compliant upstream APIs. Do not rely on shared subscriptions, browser reverse engineering, or hidden account pools.</p></div>
+        <div class="cell span-3 reveal reveal-delay-2"><h3>DeepSeek first</h3><p class="muted">Start with the most concrete route, then add more Chinese providers only after verification.</p></div>
+        <div class="cell span-3 reveal reveal-delay-3"><h3>Usage ledger</h3><p class="muted">Track requests, tokens, charged amount, latency, and route behavior in the customer console.</p></div>
+        <div class="cell span-3 reveal reveal-delay-4"><h3>Prepaid credits</h3><p class="muted">Keep billing exposure explicit for developers testing Chinese model routes.</p></div>
       </div>
     </section>
 
     <section class="section">
       <div class="section-head">
         <div>
-          <p class="eyebrow">Quickstart</p>
-          <h2>Switch an OpenAI client in three lines.</h2>
+          <p class="eyebrow reveal">Quickstart</p>
+          <h2 class="reveal reveal-delay-1">Switch an OpenAI client in <span class="grad">three lines.</span></h2>
         </div>
-        <p class="muted">Create a token in the console, set the hosted base URL, and call <code>deepseek-chat</code>.</p>
+        <p class="muted reveal reveal-delay-2">Create a token in the console, set the hosted base URL, and call <code>deepseek-chat</code>.</p>
       </div>
-      <pre class="code">from openai import OpenAI
+      <pre class="code reveal reveal-delay-3"><span class="tok-kw">from</span> openai <span class="tok-kw">import</span> OpenAI
 
-client = OpenAI(
-    api_key="YOUR_MODELBRIDGE_API_KEY",
-    base_url="https://api.modelbridgeapi.com/v1"
+client = <span class="tok-fn">OpenAI</span>(
+    api_key=<span class="tok-str">"YOUR_MODELBRIDGE_API_KEY"</span>,
+    base_url=<span class="tok-str">"https://api.modelbridgeapi.com/v1"</span>
 )
 
-response = client.chat.completions.create(
-    model="deepseek-chat",
-    messages=[{"role": "user", "content": "Hello"}]
+response = client.chat.completions.<span class="tok-fn">create</span>(
+    model=<span class="tok-str">"deepseek-chat"</span>,
+    messages=[{<span class="tok-str">"role"</span>: <span class="tok-str">"user"</span>, <span class="tok-str">"content"</span>: <span class="tok-str">"Hello"</span>}]
 )
-print(response.choices[0].message.content)</pre>
+<span class="tok-fn">print</span>(response.choices[<span class="tok-num">0</span>].message.content)</pre>
     </section>
   </main>
 
   <footer class="footer">
     <div class="shell">
-      <span>ModelBridge API</span>
+      <span>ModelBridge API · © 2026</span>
       <span><a href="legal/terms.html">Terms</a> · <a href="legal/privacy.html">Privacy</a> · <a href="legal/refund.html">Refund</a> · <a href="legal/acceptable-use.html">Acceptable Use</a></span>
     </div>
   </footer>
+
+  <script src="assets/anim.js" defer></script>
 </body>
 </html>

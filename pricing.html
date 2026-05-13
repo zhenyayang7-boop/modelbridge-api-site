@@ -3,23 +3,46 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Pricing - ModelBridge API</title>
-  <meta name="description" content="DeepSeek API pricing and prepaid credit packages for ModelBridge API." />
+  <title>Pricing — ModelBridge API</title>
+  <meta name="description" content="DeepSeek API pricing with prepaid USD credits. $0.30/1M input, $0.60/1M output." />
+
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
+  <link rel="apple-touch-icon" href="assets/favicon.svg" />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://modelbridgeapi.com/pricing.html" />
+  <meta property="og:title" content="Pricing — ModelBridge API" />
+  <meta property="og:description" content="DeepSeek API pricing with prepaid USD credits. $0.30/1M input, $0.60/1M output." />
+  <meta property="og:image" content="https://modelbridgeapi.com/assets/og-image.svg" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:image" content="https://modelbridgeapi.com/assets/og-image.svg" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
   <header class="topbar">
     <div class="shell nav">
       <a class="brand" href="index.html"><span class="mark">MB</span><span>ModelBridge API</span></a>
-      <nav class="navlinks"><a href="index.html">Home</a><a href="index.html#models">Models</a><a href="docs/">Docs</a><a class="nav-cta" href="https://panel.modelbridgeapi.com">Console</a></nav>
+      <nav class="navlinks">
+        <a href="index.html">Home</a>
+        <a href="index.html#models">Models</a>
+        <a href="docs/">Docs</a>
+        <a href="legal/terms.html">Legal</a>
+        <a class="nav-cta" href="https://panel.modelbridgeapi.com">Console →</a>
+      </nav>
     </div>
   </header>
   <main class="shell">
-    <section class="section">
-      <p class="eyebrow">Pricing</p>
-      <h1>DeepSeek API pricing with prepaid credits.</h1>
-      <p class="lead">Recharge in the customer console, create an API key, and call DeepSeek through the hosted OpenAI-compatible base URL.</p>
-      <div class="actions">
+    <section class="section" style="position:relative;">
+      <span class="orb orb-cyan" aria-hidden="true" style="top:-160px;left:-200px;"></span>
+      <span class="orb orb-purple" aria-hidden="true" style="top:-100px;right:-180px;"></span>
+      <p class="eyebrow reveal">Pricing</p>
+      <h1 class="reveal reveal-delay-1">DeepSeek API pricing with <span class="grad">prepaid credits.</span></h1>
+      <p class="lead reveal reveal-delay-2">Recharge in the customer console, create an API key, and call DeepSeek through the hosted OpenAI-compatible base URL.</p>
+      <div class="actions reveal reveal-delay-3">
         <a class="button accent" href="https://panel.modelbridgeapi.com">Open Customer Console</a>
         <a class="button secondary" href="docs/">Read Quickstart</a>
       </div>
@@ -28,12 +51,12 @@
     <section class="section">
       <div class="section-head">
         <div>
-          <p class="eyebrow">Model rates</p>
-          <h2>Start with the active DeepSeek route.</h2>
+          <p class="eyebrow reveal">Model rates</p>
+          <h2 class="reveal reveal-delay-1">Start with the <span class="grad">active DeepSeek route.</span></h2>
         </div>
-        <p class="muted">Additional models should be published only after provider verification, fallback behavior, and billing records are ready.</p>
+        <p class="muted reveal reveal-delay-2">Additional models should be published only after provider verification, fallback behavior, and billing records are ready.</p>
       </div>
-      <div class="table-wrap">
+      <div class="table-wrap reveal reveal-delay-1">
         <table>
           <thead><tr><th>Model</th><th>Input</th><th>Output</th><th>Status</th><th>Use case</th></tr></thead>
           <tbody>
@@ -66,27 +89,27 @@
     <section class="section">
       <div class="section-head">
         <div>
-          <p class="eyebrow">Credits</p>
-          <h2>Recharge in the console, not a public test page.</h2>
+          <p class="eyebrow reveal">Credits</p>
+          <h2 class="reveal reveal-delay-1">Recharge in the console, <span class="grad">not a public test page.</span></h2>
         </div>
-        <p class="muted">The public site explains packages. The customer console owns checkout, balance, API keys, usage, and invoices.</p>
+        <p class="muted reveal reveal-delay-2">The public site explains packages. The customer console owns checkout, balance, API keys, usage, and invoices.</p>
       </div>
       <div class="pricing-grid">
-        <div class="cell span-4">
+        <div class="cell span-4 reveal reveal-delay-1">
           <div class="label">Starter</div>
-          <h2>$5</h2>
+          <h2><span class="grad">$5</span></h2>
           <p class="muted">Small DeepSeek tests, SDK migration, and first production smoke checks.</p>
           <a class="button accent" href="https://panel.modelbridgeapi.com">Recharge</a>
         </div>
-        <div class="cell span-4">
+        <div class="cell span-4 reveal reveal-delay-2">
           <div class="label">Builder</div>
-          <h2>$20</h2>
+          <h2><span class="grad">$20</span></h2>
           <p class="muted">Longer app tests, repeated prompts, and early user traffic.</p>
           <a class="button accent" href="https://panel.modelbridgeapi.com">Recharge</a>
         </div>
-        <div class="cell span-4">
+        <div class="cell span-4 reveal reveal-delay-3">
           <div class="label">Operator</div>
-          <h2>Custom</h2>
+          <h2><span class="grad">Custom</span></h2>
           <p class="muted">Higher volume, route planning, and upcoming Chinese multimodal coverage.</p>
           <a class="button secondary" href="docs/">Review docs</a>
         </div>
@@ -94,11 +117,17 @@
     </section>
 
     <section class="section">
-      <div class="notice">
+      <div class="notice reveal">
         <strong>Formal customer flow:</strong> open the console, register or sign in, recharge credits, create an API key, then call <code>https://api.modelbridgeapi.com/v1</code>. The old standalone dashboard checkout is no longer part of the customer path.
       </div>
     </section>
   </main>
-  <footer class="footer"><div class="shell"><span>ModelBridge API</span><span><a href="legal/terms.html">Terms</a> · <a href="legal/privacy.html">Privacy</a> · <a href="legal/refund.html">Refund</a> · <a href="legal/acceptable-use.html">Acceptable Use</a></span></div></footer>
+  <footer class="footer">
+    <div class="shell">
+      <span>ModelBridge API · © 2026</span>
+      <span><a href="legal/terms.html">Terms</a> · <a href="legal/privacy.html">Privacy</a> · <a href="legal/refund.html">Refund</a> · <a href="legal/acceptable-use.html">Acceptable Use</a></span>
+    </div>
+  </footer>
+  <script src="assets/anim.js" defer></script>
 </body>
 </html>

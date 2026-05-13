@@ -5,30 +5,51 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <meta name="robots" content="noindex,nofollow" />
   <meta http-equiv="refresh" content="4; url=https://panel.modelbridgeapi.com" />
-  <title>Console moved - ModelBridge API</title>
+  <title>Console moved — ModelBridge API</title>
+
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
+  <link rel="apple-touch-icon" href="assets/favicon.svg" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
   <header class="topbar">
     <div class="shell nav">
       <a class="brand" href="index.html"><span class="mark">MB</span><span>ModelBridge API</span></a>
-      <nav class="navlinks"><a href="index.html">Home</a><a href="pricing.html">Pricing</a><a href="docs/">Docs</a><a class="nav-cta" href="https://panel.modelbridgeapi.com">Console</a></nav>
+      <nav class="navlinks">
+        <a href="index.html">Home</a>
+        <a href="pricing.html">Pricing</a>
+        <a href="docs/">Docs</a>
+        <a href="legal/terms.html">Legal</a>
+        <a class="nav-cta" href="https://panel.modelbridgeapi.com">Console →</a>
+      </nav>
     </div>
   </header>
   <main class="shell">
-    <section class="section legacy-panel">
-      <p class="eyebrow">Legacy dashboard</p>
-      <h1>The customer console has moved.</h1>
-      <p class="lead">ModelBridge account setup, recharge, API keys, balance, and usage now live in the formal customer console.</p>
-      <div class="actions">
+    <section class="section legacy-panel" style="position:relative;">
+      <span class="orb orb-cyan" aria-hidden="true" style="top:-160px;left:-200px;"></span>
+      <span class="orb orb-purple" aria-hidden="true" style="bottom:-160px;right:-180px;"></span>
+      <p class="eyebrow reveal">Legacy dashboard</p>
+      <h1 class="reveal reveal-delay-1">The customer console <span class="grad">has moved.</span></h1>
+      <p class="lead reveal reveal-delay-2">ModelBridge account setup, recharge, API keys, balance, and usage now live in the formal customer console.</p>
+      <div class="actions reveal reveal-delay-3">
         <a class="button accent" href="https://panel.modelbridgeapi.com">Open Customer Console</a>
         <a class="button secondary" href="index.html">Return Home</a>
       </div>
-      <div class="notice">
+      <div class="notice reveal reveal-delay-4" style="margin-top:32px;">
         <strong>Internal note:</strong> the old standalone MVP dashboard was used for backend and Dodo checkout validation. It is no longer part of the customer path.
       </div>
     </section>
   </main>
-  <footer class="footer"><div class="shell"><span>ModelBridge API</span><span><a href="legal/terms.html">Terms</a> · <a href="legal/privacy.html">Privacy</a> · <a href="legal/refund.html">Refund</a> · <a href="legal/acceptable-use.html">Acceptable Use</a></span></div></footer>
+  <footer class="footer">
+    <div class="shell">
+      <span>ModelBridge API · © 2026</span>
+      <span><a href="legal/terms.html">Terms</a> · <a href="legal/privacy.html">Privacy</a> · <a href="legal/refund.html">Refund</a> · <a href="legal/acceptable-use.html">Acceptable Use</a></span>
+    </div>
+  </footer>
+  <script src="assets/anim.js" defer></script>
 </body>
 </html>
